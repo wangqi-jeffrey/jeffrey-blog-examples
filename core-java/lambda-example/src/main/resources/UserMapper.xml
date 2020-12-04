@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeffrey.integrated.UserMapper">
+    <select id="select" resultType="User" >
+        select * from user where id = #{id}
+    </select>
+
+    <select id="selectList" resultType="User">
+        select * from user
+    </select>
+
+    <select id="selectBySql" parameterType="java.util.Map" resultType="User">
+        <if test="type == 1">
+            select * from user
+        </if>
+        <if test="type == 2">
+            select * from user where 1 = 1
+        </if>
+    </select>
+
+    <select id="testBind" parameterType="java.util.Map" resultType="User">
+        <bind name="pattern" value="'%' + name + '%'" />
+        select * from user
+        where name like #{pattern}
+    </select>
+
+    <select id="testTrim" parameterType="java.util.Map" resultType="User">
+        select * from user
+        <!-- Here, the set element will dynamically prepend the SET keyword, and also eliminate any extraneous commas that might trail the value assignments after the conditions are applied. -->
+        <trim prefix="w" prefixOverrides="and |or " suffixOverrides=",">
+            and 1 = 2,
+        </trim><!-- select * from user w 1 = 2 -->
+    </select>
+
+    <insert id="insertByMultiDB">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            <if test="_databaseId == 'oracle'">
+                select seq_users.nextval from dual
+            </if>
+            <if test="_databaseId == 'db2'">
+                select nextval for seq_users from sysibm.sysdummy1"
+            </if>
+        </selectKey>
+        insert into user values (#{id}, #{name})
+    </insert>
+</mapper>

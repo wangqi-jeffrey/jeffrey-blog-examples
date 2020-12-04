@@ -1,0 +1,4 @@
+rootProject.name = 'jeffrey-blog-examples'
+include 'core-java:lambda-example'
+
+project(':core-java:lambda-example').projectDir = file('core-java/lambda-example')

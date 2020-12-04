@@ -1,0 +1,45 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		mavenLocal()
+		maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+		maven { url "http://repo.spring.io/snapshot" }
+		maven { url "http://repo.spring.io/milestone" }
+		maven { url "https://plugins.gradle.org/m2/" }
+		jcenter()
+	}
+
+}
+
+allprojects {
+	apply plugin: 'java'
+
+	group = 'com.jeffrey.blog.examples'
+	version = '1.0-SNAPSHOT'
+
+}
+
+subprojects {
+	apply plugin: 'java'
+	sourceCompatibility = 11
+	targetCompatibility = 11
+	tasks.withType(JavaCompile) {
+		options.encoding = 'UTF-8'
+	}
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+
+		maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+		maven { url "http://repo.maven.apache.org/maven2" }
+	}
+
+	dependencies {
+		testCompile group: 'junit', name: 'junit', version: '4.12'
+		implementation group: 'org.mybatis', name: 'mybatis', version: '3.5.6'
+		implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+		runtime group: 'mysql', name: 'mysql-connector-java', version: '5.1.49'
+	}
+
+}
