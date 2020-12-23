@@ -1,4 +1,6 @@
 rootProject.name = 'jeffrey-blog-examples'
 include 'core-java:lambda-example'
+include 'Microservices&DistributedSystem:distributed-id'
 
 project(':core-java:lambda-example').projectDir = file('core-java/lambda-example')
+project(':Microservices&DistributedSystem:distributed-id').projectDir = file('Microservices&DistributedSystem/distributed-id')
