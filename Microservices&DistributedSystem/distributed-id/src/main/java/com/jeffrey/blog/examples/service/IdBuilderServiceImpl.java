@@ -25,7 +25,7 @@ public class IdBuilderServiceImpl implements IdBuilderService, InitializingBean 
     private static Map<Integer, LocalSeqId> localSeqMap;
     private static Map<Integer, Boolean> newBuilderMap;
     private final static Object monitor = new Object();
-    private final static Integer NEED_SEQ = 0; // FIXMEWQ: 需确认该值为多少
+    private final static Integer NEED_SEQ = 0; // 递增
     @Resource
     private IdBuilderMapper idBuilderMapper;
 
@@ -162,14 +162,20 @@ public class IdBuilderServiceImpl implements IdBuilderService, InitializingBean 
 
     @Override
     public String unionIdStr(int code) {
-        long id = this.unionId(code);
+        Long id = this.unionId(code);
+        if (id == null)
+            return null;
+
         IdBuilderPO idBuilderPO = idBuilderNotSeqMap.get(code);
         return idBuilderPO.getBizCode() + idBuilderIndex + id;
     }
 
     @Override
     public String unionSeqIdStr(int code) {
-        long id = this.unionSeqId(code);
+        Long id = this.unionSeqId(code);
+        if (id == null)
+            return null;
+
         IdBuilderPO idBuilderPO = idBuilderSeqMap.get(code);
         return idBuilderPO.getBizCode() + idBuilderIndex + id;
     }
@@ -181,7 +187,7 @@ public class IdBuilderServiceImpl implements IdBuilderService, InitializingBean 
         newBuilderMap = new ConcurrentHashMap<>(idBuilderPOS.size());
         idBuilderSeqMap = new ConcurrentHashMap<>(idBuilderPOS.size());
         localSeqMap = new ConcurrentHashMap<>(0);
-        //每次重启到时候，都需要将之前的上一个区间的id全部抛弃，使用新的步长区间
+        // 每次重启到时候，都需要将之前的上一个区间的id全部抛弃，使用新的步长区间
         for (IdBuilderPO idBuilderPO : idBuilderPOS) {
             if (idBuilderPO.getIsSeq() == NEED_SEQ) {
                 idBuilderSeqMap.put(idBuilderPO.getId(), idBuilderPO);

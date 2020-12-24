@@ -1,5 +1,6 @@
 package com.jeffrey.blog.examples.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,10 @@ import java.util.Date;
  * @author WQ
  * @date 2020/12/23 9:33 AM
  */
-public class IdBuilderPO {
+public class IdBuilderPO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private Integer id;
 
     private String des;

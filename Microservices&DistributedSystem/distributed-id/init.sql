@@ -11,3 +11,8 @@ CREATE TABLE `t_id_builder_config` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO t_id_builder_config (id, des, init_num, current_threshold, step, biz_code, version, is_seq, create_time, update_time) VALUES (1, '订单id生成', 0, 0, 4000, 'order_', 0, 1, '2020-12-23 12:17:10', '2020-12-23 12:17:10');
+INSERT INTO t_id_builder_config (id, des, init_num, current_threshold, step, biz_code, version, is_seq, create_time, update_time) VALUES (2, '支付流水id生成', 0, 0, 2000, 'pay_', 0, 1, '2020-12-23 12:17:10', '2020-12-23 12:17:10');
+INSERT INTO t_id_builder_config (id, des, init_num, current_threshold, step, biz_code, version, is_seq, create_time, update_time) VALUES (3, 'IM序列号', 0, 0, 10, 'im_', 0, 0, '2020-12-23 12:17:10', '2020-12-23 12:17:10');
+INSERT INTO t_id_builder_config (id, des, init_num, current_threshold, step, biz_code, version, is_seq, create_time, update_time) VALUES (4, '合同序列号', 10000, 10000, 2000, 'contract_', 0, 1, '2020-12-23 12:17:10', '2020-12-23 12:17:10');
