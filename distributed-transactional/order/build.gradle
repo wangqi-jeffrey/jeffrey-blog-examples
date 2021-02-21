@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'com.jeffrey.distributed.transactional'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-integration'
+    implementation 'org.springframework.integration:spring-integration-redis'
+    implementation 'org.redisson:redisson:3.3.2'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.0'
+    runtime group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+    implementation 'com.alibaba:druid:1.1.12'
+    implementation 'com.alibaba.cloud:spring-cloud-alibaba-seata:2.2.0.RELEASE'
+}

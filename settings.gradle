@@ -4,9 +4,15 @@ include 'Microservices&DistributedSystem:distributed-id'
 include 'distributed-lock:eureka'
 include 'distributed-lock:service-order'
 include 'distributed-lock:api-driver'
+include 'distributed-transactional:eureka'
+include 'distributed-transactional:inventory'
+include 'distributed-transactional:order'
 
 project(':core-java:lambda-example').projectDir = file('core-java/lambda-example')
 project(':Microservices&DistributedSystem:distributed-id').projectDir = file('Microservices&DistributedSystem/distributed-id')
 project(':distributed-lock:eureka').projectDir = file('distributed-lock/eureka')
 project(':distributed-lock:service-order').projectDir = file('distributed-lock/service-order')
 project(':distributed-lock:api-driver').projectDir = file('distributed-lock/api-driver')
+project(':distributed-transactional:eureka').projectDir = file('distributed-transactional/eureka')
+project(':distributed-transactional:inventory').projectDir = file('distributed-transactional/inventory')
+project(':distributed-transactional:order').projectDir = file('distributed-transactional/order')
