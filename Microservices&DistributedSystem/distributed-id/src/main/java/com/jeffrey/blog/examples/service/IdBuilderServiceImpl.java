@@ -26,6 +26,7 @@ public class IdBuilderServiceImpl implements IdBuilderService, InitializingBean 
     private static Map<Integer, Boolean> newBuilderMap;
     private final static Object monitor = new Object();
     private final static Integer NEED_SEQ = 0; // 递增
+
     @Resource
     private IdBuilderMapper idBuilderMapper;
 
@@ -202,4 +203,5 @@ public class IdBuilderServiceImpl implements IdBuilderService, InitializingBean 
         }
         this.idBuilderIndex = Integer.parseInt(System.getProperty("idBuilder.index"));
     }
+
 }

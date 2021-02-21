@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'com.jeffrey.security.distributed.lock'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+}
